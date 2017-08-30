@@ -1,4 +1,4 @@
-# © Copyright IBM Corporation 2015, 2017
+# © Copyright IBM Corporation 2017
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,19 +18,12 @@
 #FROM ubuntu:16.04
 FROM ubuntu:14.04
 
-LABEL maintainer "Arthur Barr <arthur.barr@uk.ibm.com>, Rob Parker <PARROBE@uk.ibm.com>"
+LABEL maintainer "Callum Jackson <callumj@uk.ibm.com>"
 
-#IIBMQ To speed up build, get installer from a local folder
-#IIBMQ Start HTTP server in the folder containing the installer before running the build:
-#IIBMQ nohup python -m SimpleHTTPServer 8000 &
-# The URL to download the MQ installer from in tar.gz format
 ARG MQ_URL=https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/messaging/mqadv/mqadv_dev903_ubuntu_x86-64.tar.gz
-#ARG MQ_URL=http://192.168.246.140:8000/mqadv_dev903_ubuntu_x86-64.tar.gz
 
 
-#IIBMQ Optional: install Client and Samples. Remove additional languages (ibmmq-msg-.*).
 # The MQ packages to install
-#ARG MQ_PACKAGES="ibmmq-server ibmmq-java ibmmq-jre ibmmq-gskit ibmmq-web ibmmq-msg-.*"
 ARG MQ_PACKAGES="ibmmq-server ibmmq-java ibmmq-jre ibmmq-gskit ibmmq-web ibmmq-client ibmmq-samples"
 
 RUN export DEBIAN_FRONTEND=noninteractive \

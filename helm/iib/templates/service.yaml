@@ -24,6 +24,12 @@ spec:
     name: serverlistener 
   - port: 7080
     targetPort: 7080
-    name: nodelistener 
+    name: nodelistener
+  - port: 1414
+    targetPort: 1414
+    name: mqchannel
+  - port: 9443
+    targetPort: 9443
+    name: mqwebui 
   selector:
     app: iibv10 

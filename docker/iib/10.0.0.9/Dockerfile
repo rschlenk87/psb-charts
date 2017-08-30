@@ -1,4 +1,4 @@
-# Â© Copyright IBM Corporation 2015.
+# © Copyright IBM Corporation 2017.
 #
 # All rights reserved. This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v1.0
@@ -11,17 +11,13 @@
 #FROM ubuntu:14.04
 FROM mqbase
 
-MAINTAINER Sam Rogers srogers@uk.ibm.com
+MAINTAINER Callum Jackson callumj@uk.ibm.com
 
 # Install curl
 RUN apt-get update && \
     apt-get install -y curl && \
     rm -rf /var/lib/apt/lists/*
 
-#IIBMQ To speed up build, get installer from a local folder
-#IIBMQ Start HTTP server in the folder containing the installer before running the build:
-#IIBMQ nohup python -m SimpleHTTPServer 8000 &
-# Install IIB V10 Developer edition
 RUN mkdir /opt/ibm && \
     curl http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/integration/10.0.0.9-IIB-LINUX64-DEVELOPER.tar.gz \
     | tar zx --exclude iib-10.0.0.9/tools --directory /opt/ibm && \
@@ -37,8 +33,6 @@ RUN echo "IIB_10:" > /etc/debian_chroot  && \
 
 
 #IIBMQ Add mqm to list of groups iibuser is member of
-# Create user to run as
-#RUN useradd --create-home --home-dir /home/iibuser -G mqbrkrs,sudo iibuser && \
 RUN useradd --create-home --home-dir /home/iibuser -G mqbrkrs,sudo,mqm iibuser && \
     sed -e 's/^%sudo	.*/%sudo	ALL=NOPASSWD:ALL/g' -i /etc/sudoers
 
@@ -48,10 +42,6 @@ RUN sed -i 's/sha512/sha512 minlen=8/'  /etc/pam.d/common-password && \
     sed -i 's/PASS_MAX_DAYS\t99999/PASS_MAX_DAYS\t90/'  /etc/login.defs
 
 #IIBMQ Copy all iib*.sh scripts
-# Copy in script files
-#COPY iib_manage.sh /usr/local/bin/
-#COPY iib-license-check.sh /usr/local/bin/
-#COPY iib_env.sh /usr/local/bin/
 COPY iib*.sh /usr/local/bin/
 RUN chmod +rx /usr/local/bin/*.sh
 

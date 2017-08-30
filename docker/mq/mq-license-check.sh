@@ -1,6 +1,6 @@
 #!/bin/bash
 # -*- mode: sh -*-
-# Â© Copyright IBM Corporation 2015, 2016
+# © Copyright IBM Corporation 2016
 #
 #
 # Licensed under the Apache License, Version 2.0 (the "License");

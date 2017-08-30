@@ -8,6 +8,6 @@
 #  IBM Corporation - initial API and implementation
 ###############################################################################
 apiVersion: v1
-description: IBM Integration Bus node
+description: IBM Integration Bus node with local MQ Queue Manager associated 
 name: iib
 version: 0.1.2

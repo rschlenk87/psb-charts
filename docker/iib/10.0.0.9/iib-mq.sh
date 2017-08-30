@@ -1,6 +1,6 @@
 #!/bin/bash
 # -*- mode: sh -*-
-# Â© Copyright IBM Corporation 2015, 2017
+# © Copyright IBM Corporation 2017
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,9 +13,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-#IIBMQ This is based on the MQ Docker script mq.sh
-#IIBMQ It has been chnged to run on an IIB Container
 
 export MQ_QMGR_NAME=$1
 
@@ -39,5 +36,4 @@ source mq-configure-qmgr.sh
 echo "----------------------------------------"
 source mq-dev-config.sh
 echo "----------------------------------------"
-#IIBMQ Using IIB monitoring script
-#exec mq-monitor-qmgr.sh ${MQ_QMGR_NAME}
+
