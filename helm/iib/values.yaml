@@ -14,5 +14,5 @@ iib:
 mq:
   qmgrName: QM1
 image:
-  repository: cpjackson/testimageprivate
-  tag: iib10rest
+  repository: master.cfc:8500/default/iib10009
+  tag: dev
