@@ -30,13 +30,13 @@ As a pre-req to create a new helm chart, you need to install **helm client 2.4.1
 **It is assumed that you have already cloned the git repository to the following location: /iibmqDocker**
 
 1. Helm provides the ability to valid the helm chart prior to us packaging and deploying to a server. Run the following the command:
-   /opt/helm/linux-amd64/helm lint /iibmqDocker/refarch-integration-esb/helm/iib
-   '''
+   /opt/helm/linux-amd64/helm lint /iibmqDocker/refarch-integration-esb/helm/iib      
+   ```
       ==> Linting /iibmqDocker/refarch-integration-esb/helm/iib
       [INFO] Chart.yaml: icon is recommended
 
       1 chart(s) linted, no failures
-    '''
+    ```
 
 1. The Helm chart needs to be packaged for deployment, run the following command: 
    /opt/helm/linux-amd64/helm package /iibmqDocker/refarch-integration-esb/helm/iib
@@ -50,8 +50,8 @@ As a pre-req to create a new helm chart, you need to install **helm client 2.4.1
 1. This file will then be updated using the helm command:
    /opt/helm/linux-amd64/helm repo index --merge index.yaml --url http://9.19.34.117/storage/CASE/refarch-privatecloud ./
           
-   The command should add the following entry into the index.yaml file:
-   '''
+   The command should add the following entry into the index.yaml file:      
+   ```
    apiVersion: v1
    entries:
      iib:
@@ -63,7 +63,7 @@ As a pre-req to create a new helm chart, you need to install **helm client 2.4.1
        urls:
        - http://9.19.34.117/storage/CASE/refarch-privatecloud/iib-0.1.2.tgz
        version: 0.1.2
-   '''
+   ```
 
 1. The index.yaml file now needs to be uploaded to the Helm repository. Use whatever mechanism you like to upload the file to the Helm repository, I used scp:
    scp index.yaml callumj@172.16.0.5:/storage/CASE/local-charts
