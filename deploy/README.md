@@ -1,9 +1,9 @@
-#Building the IBM Integration Bus Application
+# Building the IBM Integration Bus Application
 
 The following documents how to build a deployable BAR file for the Integration 
 application, and then upload this to a HTTP server. 
 
-##Prerequisite
+## Prerequisite
 As a prerequisite, IBM Integration Bus needs to be installed on the machine. These instructions
 are assuming a Linux operating system:  
 
@@ -19,7 +19,7 @@ are assuming a Linux operating system:
 command: 
    /opt/ibm/iib-10.0.0.9/iib make registry global accept license silently
     
-##Building the IBM Integration Bus Application
+## Building the IBM Integration Bus Application
 **It is assumed that you have already cloned the git repository to the following location: /iibmqDocker**
 
 1. Run the mqsiprofile command to setup the environment:
@@ -32,7 +32,7 @@ command:
    scp iibApp.bar callumj@9.19.34.117:/storage/CASE/refarch-privatecloud   
    
 
-##Creating an instance in IBM Cloud private
+## Creating an instance in IBM Cloud private
 
 1. Log into the IBM Cloud private Web UI, and navigate to the System page, and click **Sync Up Repository**:  
 
