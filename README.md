@@ -3,10 +3,13 @@
 This project is part of the 'IBM Integration Reference Architecture' suite, available at [https://github.com/ibm-cloud-architecture/refarch-integration](https://github.com/ibm-cloud-architecture/refarch-integration). It demonstrates how an IBM Integration Bus runtime can be deployed on premise, running the gateway flow to expose REST api from a SOAP back end service, and can be deployed to IBM Cloud private.
 
 # Table of Contents
-* [IIB background]()
-* [Installation]
+* [IIB background](https://github.com/ibm-cloud-architecture/refarch-integration-esb#ibm-integration-bus-background)
+* [Installation](https://github.com/ibm-cloud-architecture/refarch-integration-esb#ibm-integration-bus-background)
+* [Flow implementation](https://github.com/ibm-cloud-architecture/refarch-integration-esb#inventory-flow)
+* [CI/CD](https://github.com/ibm-cloud-architecture/refarch-integration-esb#cicd)
+* [Service Management](https://github.com/ibm-cloud-architecture/refarch-integration-esb#application-performance-management)
 
-## IBM Integration Bus Background
+# IBM Integration Bus Background
 
 IBM Integration Bus is a market-leading lightweight enterprise integration engine that offers a fast, simple way for systems and applications to communicate with each other. As a result, it can help you achieve business value, reduce IT complexity and save money.
 IBM Integration Bus supports a range of integration choices, skills and interfaces to optimize the value of existing technology investments.
@@ -17,6 +20,8 @@ IBM Integration Bus supports a range of integration choices, skills and interfac
 # Server installation
 ## On-premise
 For the on-premise solution a standard installation was done following the instructions from the [product documentation](https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.mft.doc/bh25992_.htm).
+
+We created a new virtual machine with one of the supported linux OS.
 
 Remember that to start the IIB toolkit you can use the `<install_dir>/iib toolkit` command.
 
@@ -58,14 +63,29 @@ and the response is mapped back to json item array in the mapResponse node:
 ![](docs/map-json.png)
 
 The same logic / implementation pattern is done for the other flows supporting each REST operations. All the flows are defined in the integration/RESTAPI folder.
+
 | Operation | Flow name | Map |
+| --------- | -------- | ----- |
 | get item  | getId.subflow | getId_mapRequest, getId_mapResponse |
-| | | |
-| -- | -- | -- | -- |
+| put item  | putId.subflow | putId_mapRequest, putId_mapResponse |
+| delete item  | deleteId.subflow | deleteId_mapRequest, deleteId_mapResponse |
+| get items | getItems.subflow | getItems_mapRequest, getItems_mapResponse |
+| post items | postItems.subflow | postItems_mapRequest, postItems_mapResponse |
+
+
 # CI/CD
 
-The elements of the IIB project are text files that are pushed to github repository. 
- TBD
-# CSMO
+The elements of the IIB project are text files that are pushed to github repository. It is easy to have a Jenkins file to automate the integration and deployment, using Apache ant. [This article ](https://developer.ibm.com/integration/blog/2015/10/02/continuous-build-and-deploy-automation-with-ibm-integration-bus-v10-using-ant-git-and-jenkins/) describes one of the potential approach.
 
-[Here](https://www.ibm.com/support/knowledgecenter/SSHLNR_8.1.4/com.ibm.pm.doc/install/iib_linux_aix_config_agent.htm#iib_linux_aix_config_agent)
+The steps can be summarized as:
+1.Build shell scripts to use IIB commands `mqsicreatebar` and `mqsipackagebar`
+1.Integrate the script in a jenkins file
+1.Define a jenkins pipeline to reference the github project
+1.Deploy the IIB product on the Jenkins server to access build capabilities.
+
+To tune.
+
+# Application Performance Management
+
+To get visibility into the IIB runtime and server performance metrics, a APM agent is installed on the server.
+[The instructions are here](https://www.ibm.com/support/knowledgecenter/SSHLNR_8.1.4/com.ibm.pm.doc/install/iib_linux_aix_config_agent.htm#iib_linux_aix_config_agent)
