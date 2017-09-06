@@ -1,26 +1,15 @@
-# Building the IBM Integration Bus Application
+# Deploying IIB Application to IBM Cloud private
 
-This article documents how to build a deployable BAR file for the Integration 
-application, and then upload this to a HTTP server.
+This article documents how to build a deployable BAR file for the Integration
+application which will run in IIB, as a container image running in IBM Cloud private
 
 ## Prerequisite
-As a prerequisite, IBM Integration Bus needs to be installed on the machine. These instructions
-are assuming a Linux operating system:  
+As a prerequisite, IBM Integration Bus needs to be installed on the machine. See instructions
+in main readme  
 
-1. Download the developer edition:    
-   wget http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/integration/10.0.0.9-IIB-LINUX64-DEVELOPER.tar.gz
-
-
-1. Install the downloaded file into /opt/ibm:
-   mkdir /opt/ibm
-   tar -xf 10.0.0.9-IIB-LINUX64-DEVELOPER.tar.gz --exclude iib-10.0.0.9/tools --directory /opt/ibm
-
-1. Review the license agreement and if acceptable accept using the following
-command:
-   /opt/ibm/iib-10.0.0.9/iib make registry global accept license silently
 
 ## Building the IBM Integration Bus Application
-**It is assumed that you have already cloned the git repository to the following location: /iibmqDocker**
+**It is assumed that you have already cloned the git repository**
 
 1. Run the mqsiprofile command to setup the environment:
    . /opt/ibm/iib-10.0.0.9/server/bin/mqsiprofile

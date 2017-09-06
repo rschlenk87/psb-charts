@@ -8,6 +8,7 @@ This project is part of the 'IBM Integration Reference Architecture' suite, avai
 * [Flow implementation](https://github.com/ibm-cloud-architecture/refarch-integration-esb#inventory-flow)
 * [CI/CD](https://github.com/ibm-cloud-architecture/refarch-integration-esb#cicd)
 * [Service Management](https://github.com/ibm-cloud-architecture/refarch-integration-esb#application-performance-management)
+* [Compendium](https://github.com/ibm-cloud-architecture/refarch-integration-esb#compendium)
 
 # IBM Integration Bus Background
 
@@ -22,7 +23,17 @@ IBM Integration Bus supports a range of integration choices, skills and interfac
 For the on-premise solution a standard installation was done following the instructions from the [product documentation](https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.mft.doc/bh25992_.htm).
 
 We created a new virtual machine with one of the supported linux OS.
+1. Download the developer edition:    
+   wget http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/integration/10.0.0.9-IIB-LINUX64-DEVELOPER.tar.gz
 
+
+1. Install the downloaded file into /opt/ibm:
+   mkdir /opt/ibm
+   tar -xf 10.0.0.9-IIB-LINUX64-DEVELOPER.tar.gz --exclude iib-10.0.0.9/tools --directory /opt/ibm
+
+1. Review the license agreement and if acceptable accept using the following
+command:
+   /opt/ibm/iib-10.0.0.9/iib make registry global accept license silently
 Remember that to start the IIB toolkit you can use the `<install_dir>/iib toolkit` command.
 
 ## Docker
@@ -89,3 +100,17 @@ To tune.
 
 To get visibility into the IIB runtime and server performance metrics, a APM agent is installed on the server.
 [The instructions are here](https://www.ibm.com/support/knowledgecenter/SSHLNR_8.1.4/com.ibm.pm.doc/install/iib_linux_aix_config_agent.htm#iib_linux_aix_config_agent)
+
+# Compendium
+
+* [View the IBM Integration Bus Dockerfile repository on Github](https://github.com/ot4i/iib-docker)
+
+* [Learn more about IBM Integration Bus Docker Tips and Tricks](https://developer.ibm.com/integration/blog/2017/04/04/ibm-integration-bus-docker-tips-tricks/)
+
+* [Learn more about IBM Integration Bus and Kubernetes](https://developer.ibm.com/integration/blog/2017/08/21/first-look-using-ibm-integration-bus-kubernetes/)
+
+* [Learn more about running IBM Integration Bus in the Bluemix Container Service](https://developer.ibm.com/integration/blog/2016/11/18/run-ibm-integration-bus-in-bluemix-in-3-easy-steps/)
+
+* [Learn more about IBM Integration Bus](https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.msgbroker.helphome.doc/help_home_msgbroker.htm)
+
+* [Learn more about IBM Integration Bus and Docker](https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.mft.doc/bz91300_.htm)
