@@ -83,6 +83,11 @@ The same logic / implementation pattern is done for the other flows supporting e
 | get items | getItems.subflow | getItems_mapRequest, getItems_mapResponse |
 | post items | postItems.subflow | postItems_mapRequest, postItems_mapResponse |
 
+# Deployment
+There are three options for deployment:
+1. Deploy manually using Docker 
+2. IBM Cloud private
+3. CI/CD
 
 ## Deploy manually using Docker 
 See the article [Deploying the application using Docker locally](deploy/README.md)
@@ -91,7 +96,7 @@ See the article [Deploying the application using Docker locally](deploy/README.m
 See the article [Deploying a new instance of IBM Integration Bus on IBM Cloud private deploying the newly created application](IBMCloudprivate/README.md)
 
 
-# CI/CD
+## CI/CD
 
 The elements of the IIB project are text files that are pushed to github repository. It is easy to have a Jenkins file to automate the integration and deployment, using Apache ant. [This article ](https://developer.ibm.com/integration/blog/2015/10/02/continuous-build-and-deploy-automation-with-ibm-integration-bus-v10-using-ant-git-and-jenkins/) describes one of the potential approach.
 
