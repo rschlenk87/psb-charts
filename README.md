@@ -24,24 +24,24 @@ For the on-premise solution a standard installation was done following the instr
 
 We created a new virtual machine with one of the supported linux OS.
 1. Download the developer edition:    
+```
    wget http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/integration/10.0.0.9-IIB-LINUX64-DEVELOPER.tar.gz
-
+```
 
 1. Install the downloaded file into /opt/ibm:
+```
    mkdir /opt/ibm
    tar -xf 10.0.0.9-IIB-LINUX64-DEVELOPER.tar.gz --exclude iib-10.0.0.9/tools --directory /opt/ibm
-
+```
 1. Review the license agreement and if acceptable accept using the following
 command:
-   /opt/ibm/iib-10.0.0.9/iib make registry global accept license silently
+```
+   /opt/ibm/iib-10.0.0.9/iib make registry global accept license silently     
+```
 Remember that to start the IIB toolkit you can use the `<install_dir>/iib toolkit` command.
 
 ## Docker
 Read [Building a docker image that include IBM Integration Bus and IBM MQ embedded using the Developer Editions](docker/README.md)
-## Helm chart
-Read [Creating a helm chart compatible with IBM Cloud private and deploying to a runtime](helm/readme.md)
-## IBM Cloud private
-See the article [Deploying a new instance of IBM Integration Bus on IBM Cloud private deploying the newly created application](deploy/README.md)
 # Inventory Flow
 This section addresses how the flow was created. We develop a REST API using IBM Integration Toolkit. ([See product documentation])(https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.mft.doc/bi12036_.htm)
 
@@ -82,6 +82,13 @@ The same logic / implementation pattern is done for the other flows supporting e
 | delete item  | deleteId.subflow | deleteId_mapRequest, deleteId_mapResponse |
 | get items | getItems.subflow | getItems_mapRequest, getItems_mapResponse |
 | post items | postItems.subflow | postItems_mapRequest, postItems_mapResponse |
+
+
+## Deploy manually using Docker 
+See the article [Deploying the application using Docker locally](deploy/README.md)
+
+## IBM Cloud private
+See the article [Deploying a new instance of IBM Integration Bus on IBM Cloud private deploying the newly created application](IBMCloudprivate/README.md)
 
 
 # CI/CD

@@ -1,7 +1,7 @@
-# Deploying IIB Application to IBM Cloud private
+# Deploying IIB Application using Docker locally
 
 This article documents how to build a deployable BAR file for the Integration
-application which will run in IIB, as a container image running in IBM Cloud private
+application which will run in IIB, as a container locally.
 
 ## Prerequisite
 As a prerequisite, IBM Integration Bus needs to be installed on the machine. See instructions
@@ -21,35 +21,11 @@ in [main readme](https://github.com/ibm-cloud-architecture/refarch-integration-e
    scp iibApp.bar callumj@9.19.34.117:/storage/CASE/refarch-privatecloud   
 
 
-## Creating an Application instance in IBM Cloud private - App Center
+## Run the application locally
 
-1. Log into the IBM Cloud private Web UI, and navigate to the System page, and click **Sync Up Repository**:  
+1. Run the following command to run the docker container:
+```
+  docker run -d --name iibrest2soap -h iibrest2soap -e LICENSE=accept -e MQ_QMGR_NAME=IIBQM -p 1414:1414 -p 9443:9443 -v mqdata:/var/mqm -e IIB_LICENSE=accept -e NODENAME=iibrest2soap -e SVRNAME=default -e IIB_APP_LOCATION=http://9.19.34.117/storage/CASE/refarch-privatecloud/iibApp.bar -p 4414:4414 -p 7080:7080 iib10009
+```   
 
-   ![](img/syncRepository.png)
-   Confirm the Sync operation.
-
-1. Open the **App Center**, and type IIB within the search bar:      
-
-   ![](img/AppCenterIIB.png)
-
-1. Click on the **Install Package** button, and customize the locations for your Integration Bar file, and potentially the Docker image. Click **Review and install** button to view the final configuration:     
-
-   ![](img/configAppInstall.png)
-
-1. Click **Install** to start the installation process.
-
-1. A success pop-up will appear.
-
-1.  Navigate to the Applications section:      
-
-    ![](img/NavigateToApps.png)
-
-1. Within the search bar enter **iib** and an application should be shown:   
-
-    ![](img/IIBApp.png)    
-   At this stage it may show the available as **0** as the containers are still being created.
-
-1. Click into the application to view the details:  
-   ![](img/SummaryOfApplication.png)
-
-1. To verify the solution is working by clicking on the **access webui** link. This should load the IIB Web UI within a browser.
+1. To verify that the API is working run the following on the local machine on a browser: http://localhost:7080/iib-inventory-api/items 
