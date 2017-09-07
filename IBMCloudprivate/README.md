@@ -42,7 +42,7 @@ https://www.ibm.com/support/knowledgecenter/en/SSBS6K_1.2.0/manage_images/using_
    docker push master.cfc:8500/default/iib10009:dev
 
 ## Creating the helm chart
-Read [Creating a helm chart compatible with IBM Cloud private and deploying to a runtime](helm/readme.md)
+Read [Creating a helm chart compatible with IBM Cloud private and deploying to a runtime](main helm/readme.md)
 
 ## Deploying an instance of IIB with our application
 
