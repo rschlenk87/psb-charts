@@ -1,8 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
-cd /opt/ibm/iib-10.0.0.9/server/bin
-. ./mqsiprofile
-mqsipackagebar -a iibApp.bar -w integration -k RESTAPI
-scp iibApp.bar callumj@9.19.34.117:/storage/CASE/refarch-privatecloud
-expect "Password: "
-send $1"\r"
+. '/opt/ibm/iib-10.0.0.9/server/bin/mqsiprofile'
+mqsipackagebar -a iibAppJenkinsLocal.bar -w /tmp/git/refarch-integration-esb/integration -k RESTAPI
