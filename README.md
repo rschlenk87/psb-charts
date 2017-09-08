@@ -83,11 +83,50 @@ The same logic / implementation pattern is done for the other flows supporting e
 | get items | getItems.subflow | getItems_mapRequest, getItems_mapResponse |
 | post items | postItems.subflow | postItems_mapRequest, postItems_mapResponse |
 
+# CI/CD
+
+The elements of the IIB project are text files that are pushed to github repository. It is easy to Jenkins automate build so it can be deployed depending on the target.
+
+## Prerequisite
+As a prerequisite, IBM Integration Bus needs to be installed on the Jenkins machine. See instructions
+in [main readme](https://github.com/ibm-cloud-architecture/refarch-integration-esb#on-premise)  
+
+The steps can be summarized as:
+1. Within Jenkins setup an SSH server that hosts the HTTP Server where the package BAR file will be hosted. This requires the *Publish over SSH* plugin to be installed on the Jenkins server.     
+   ![](docs/SSHJenkinsSetup.png)
+
+1. Create a new Jenkins Item as a Freestyle project:         
+   ![](docs/JenkinsItem.png)
+   
+1. In the General section specify:    
+   * Discard old builds after 2 days and 2 maximum builds
+   * Github project is http//github.com/ibm-cloud-architecture/refarch-integration-esb
+   * Build Trigger
+   * GitHub hook Trigger      
+   ![](docs/JenkinsJobPart1.png)
+   
+1. In the Source Code Management section specify:
+   * Git
+   * Repository: http//github.com/ibm-cloud-architecture/refarch-integration-esb       
+   ![](docs/JenkinsJobPart2SourceCode.png)    
+
+1. In the build section, select *Execute shell* and enter:     
+   ```
+       chmod a+x $WORKSPACE/deploy/buildIIB.sh
+       $WORKSPACE/deploy/buildIIB.sh
+   ```
+   ![](docs/JenkinsJobPart3Build.png) 
+
+1. In the Post-build Actions section specify: 
+   * Send build artifacts over SSH 
+   * Source files: iibApp.bar
+   ![](docs/JenkinsJobPart4PostBuildAction.png)
+
 # Deployment
 There are three options for deployment:
 1. Deploy manually using Docker 
 2. IBM Cloud private
-3. CI/CD
+3. Traditional On-Premise
 
 ## Deploy manually using Docker 
 See the article [Deploying the application using Docker locally](deploy/README.md)
@@ -95,18 +134,8 @@ See the article [Deploying the application using Docker locally](deploy/README.m
 ## IBM Cloud private
 See the article [Deploying a new instance of IBM Integration Bus on IBM Cloud private deploying the newly created application](IBMCloudprivate/README.md)
 
-
-## CI/CD
-
-The elements of the IIB project are text files that are pushed to github repository. It is easy to have a Jenkins file to automate the integration and deployment, using Apache ant. [This article ](https://developer.ibm.com/integration/blog/2015/10/02/continuous-build-and-deploy-automation-with-ibm-integration-bus-v10-using-ant-git-and-jenkins/) describes one of the potential approach.
-
-The steps can be summarized as:
-1.Build shell scripts to use IIB commands `mqsicreatebar` and `mqsipackagebar`
-1.Integrate the script in a jenkins file
-1.Define a jenkins pipeline to reference the github project
-1.Deploy the IIB product on the Jenkins server to access build capabilities.
-
-To tune.
+## Traditional On-Premise
+Follow the standard deployment steps document in the [knowledge center](https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.mft.doc/af03890_.htm)
 
 # Application Performance Management
 
