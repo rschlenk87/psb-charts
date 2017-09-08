@@ -7,7 +7,7 @@ pipeline {
 		    sh 'ls -lR'
 		    sh 'echo $PWD'
 		    sh 'chmod a+xwr deploy/buildIIB.sh'
-		    sh './deploy/buildIIB.sh $password'
+		    sh '"$PWD/deploy/buildIIB.sh" $password'
 		}
         
       }
