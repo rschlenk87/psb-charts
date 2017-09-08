@@ -79,7 +79,7 @@ paths:
 definitions:
   item:
     properties:
-      itemId:
+      id:
         type: "integer"
         description: "unique id"
         format: "int32"
@@ -102,7 +102,7 @@ definitions:
     additionalProperties: false
     required:
     - "price"
-    - "itemId"
+    - "id"
   items:
     type: "array"
     items:

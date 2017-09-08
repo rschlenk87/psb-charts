@@ -22,7 +22,7 @@
             <output path="$ComIbmMessageAssembly_JSON1/JSON/spath('Data',2)/Item"/>
             <move>
                 <input path="$return/id"/>
-                <output path="itemId"/>
+                <output path="id"/>
             </move>
             <move>
                 <input path="$return/name"/>

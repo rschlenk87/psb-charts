@@ -21,7 +21,7 @@
             <output path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/Item"/>
             <move>
                 <input path="id"/>
-                <output path="itemId"/>
+                <output path="id"/>
             </move>
             <move>
                 <input path="name"/>
@@ -43,10 +43,10 @@
                 <input path="img"/>
                 <output path="img"/>
             </move>
-            <move>
+            <convert defaultValue="0">
                 <input path="quantity"/>
                 <output path="quantity"/>
-            </move>
+            </convert>
         </foreach>
         <assign value="application/json">
             <output path="$ComIbmMessageAssembly_JSON/HTTPReplyHeader/Content-Type"/>

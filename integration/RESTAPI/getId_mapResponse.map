@@ -18,7 +18,7 @@
         </move>
         <move>
             <input path="$MessageAssembly/itemByIdResponse/return/id"/>
-            <output path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/itemId"/>
+            <output path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/id" var="id"/>
         </move>
         <move>
             <input path="$MessageAssembly/itemByIdResponse/return/name"/>
@@ -40,10 +40,10 @@
             <input path="$MessageAssembly/itemByIdResponse/return/img"/>
             <output path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/img"/>
         </move>
-        <move>
+        <convert defaultValue="0">
             <input path="$MessageAssembly/itemByIdResponse/return/quantity"/>
             <output path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/quantity"/>
-        </move>
+        </convert>
         <assign value="application/json">
             <output path="$ComIbmMessageAssembly_JSON/HTTPReplyHeader/Content-Type"/>
         </assign>

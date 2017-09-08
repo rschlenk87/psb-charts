@@ -26,7 +26,7 @@ You may need to use these as inputs to your mappings.</documentation>
             <input path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/Item[1]"/>
             <output path="$MessageAssembly/newItem/arg0"/>
             <move>
-                <input path="itemId"/>
+                <input path="id" var="id"/>
                 <output path="id"/>
             </move>
             <move>

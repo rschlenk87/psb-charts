@@ -100,9 +100,7 @@ The steps can be summarized as:
    
 1. In the General section specify:    
    * Discard old builds after 2 days and 2 maximum builds
-   * Github project is http//github.com/ibm-cloud-architecture/refarch-integration-esb
-   * Build Trigger
-   * GitHub hook Trigger      
+   * Github project is http//github.com/ibm-cloud-architecture/refarch-integration-esb  
    ![](docs/JenkinsJobPart1.png)
    
 1. In the Source Code Management section specify:
