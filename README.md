@@ -4,8 +4,9 @@ This project is part of the 'IBM Integration Reference Architecture' suite, avai
 
 # Table of Contents
 * [IIB background](https://github.com/ibm-cloud-architecture/refarch-integration-esb#ibm-integration-bus-background)
-* [Installation](https://github.com/ibm-cloud-architecture/refarch-integration-esb#ibm-integration-bus-background)
+* [Server Installation](https://github.com/ibm-cloud-architecture/refarch-integration-esb#server-installation)
 * [Flow implementation](https://github.com/ibm-cloud-architecture/refarch-integration-esb#inventory-flow)
+* [Deployment](https://github.com/ibm-cloud-architecture/refarch-integration-esb#deployment)
 * [CI/CD](https://github.com/ibm-cloud-architecture/refarch-integration-esb#cicd)
 * [Service Management](https://github.com/ibm-cloud-architecture/refarch-integration-esb#application-performance-management)
 * [Compendium](https://github.com/ibm-cloud-architecture/refarch-integration-esb#compendium)
@@ -18,9 +19,11 @@ IBM Integration Bus supports a range of integration choices, skills and interfac
 [![Brief introduction to IBM Integration Bus](https://img.youtube.com/vi/qQvT4kJoPTM/0.jpg)](https://www.youtube.com/watch?v=qQvT4kJoPTM)
 
 
-# Server installation
-## On-premise
-For the on-premise solution a standard installation was done following the instructions from the [product documentation](https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.mft.doc/bh25992_.htm).
+# Server Installation
+We can run IIB directly on bare-metal or virtual machine servers, or as docker container.
+
+## Virtual Machine deployment
+For the VM deployment, the standard installation was done, following the instructions from the [product documentation](https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.mft.doc/bh25992_.htm).
 
 We created a new virtual machine with one of the supported linux OS.
 1. Download the developer edition:    
@@ -41,7 +44,8 @@ command:
 Remember that to start the IIB toolkit you can use the `<install_dir>/iib toolkit` command.
 
 ## Docker
-Read [Building a docker image that include IBM Integration Bus and IBM MQ embedded using the Developer Editions](docker/README.md)
+For docker read this note: [Building a docker image that include IBM Integration Bus and IBM MQ embedded using the Developer Editions](docker/README.md)
+
 # Inventory Flow
 This section addresses how the flow was created. We develop a REST API using IBM Integration Toolkit. ([See product documentation])(https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.mft.doc/bi12036_.htm)
 
@@ -83,13 +87,28 @@ The same logic / implementation pattern is done for the other flows supporting e
 | get items | getItems.subflow | getItems_mapRequest, getItems_mapResponse |
 | post items | postItems.subflow | postItems_mapRequest, postItems_mapResponse |
 
+# Deployment
+There are three options for deployment:
+1. Deploy manually using Docker
+2. Deploy on IBM Cloud private using Helm
+3. Traditional On-Premise using IIB commands
+
+## Deploy manually using Docker
+See the article [Deploying the application using Docker locally](deploy/README.md)
+
+## IBM Cloud private
+See the article [Deploying a new instance of IBM Integration Bus on IBM Cloud private deploying the newly created application](IBMCloudprivate/README.md)
+
+## Traditional On-Premise
+Follow the standard deployment steps document in the [knowledge center](https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.mft.doc/af03890_.htm)
+
 # CI/CD
 
-The elements of the IIB project are text files that are pushed to github repository. It is easy to Jenkins automate build so it can be deployed depending on the target.
+The elements of the IIB project are text files that are pushed to github repository. It is easy to use Jenkins to automate build and deployment. This section presents what can be done.
 
 ## Prerequisite
 As a prerequisite, IBM Integration Bus needs to be installed on the Jenkins machine. See instructions
-in [main readme](https://github.com/ibm-cloud-architecture/refarch-integration-esb#on-premise)  
+in [main readme](https://github.com/ibm-cloud-architecture/refarch-integration-esb#virtual-machine-deployment)  
 
 The steps can be summarized as:
 1. Within Jenkins setup an SSH server that hosts the HTTP Server where the package BAR file will be hosted. This requires the *Publish over SSH* plugin to be installed on the Jenkins server.     
@@ -97,12 +116,12 @@ The steps can be summarized as:
 
 1. Create a new Jenkins Item as a Freestyle project:         
    ![](docs/JenkinsItem.png)
-   
+
 1. In the General section specify:    
    * Discard old builds after 2 days and 2 maximum builds
    * Github project is http//github.com/ibm-cloud-architecture/refarch-integration-esb  
    ![](docs/JenkinsJobPart1.png)
-   
+
 1. In the Source Code Management section specify:
    * Git
    * Repository: http//github.com/ibm-cloud-architecture/refarch-integration-esb       
@@ -113,27 +132,13 @@ The steps can be summarized as:
        chmod a+x $WORKSPACE/deploy/buildIIB.sh
        $WORKSPACE/deploy/buildIIB.sh
    ```
-   ![](docs/JenkinsJobPart3Build.png) 
+   ![](docs/JenkinsJobPart3Build.png)
 
-1. In the Post-build Actions section specify: 
-   * Send build artifacts over SSH 
+1. In the Post-build Actions section specify:
+   * Send build artifacts over SSH
    * Source files: iibApp.bar
    ![](docs/JenkinsJobPart4PostBuildAction.png)
 
-# Deployment
-There are three options for deployment:
-1. Deploy manually using Docker 
-2. IBM Cloud private
-3. Traditional On-Premise
-
-## Deploy manually using Docker 
-See the article [Deploying the application using Docker locally](deploy/README.md)
-
-## IBM Cloud private
-See the article [Deploying a new instance of IBM Integration Bus on IBM Cloud private deploying the newly created application](IBMCloudprivate/README.md)
-
-## Traditional On-Premise
-Follow the standard deployment steps document in the [knowledge center](https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.mft.doc/af03890_.htm)
 
 # Application Performance Management
 

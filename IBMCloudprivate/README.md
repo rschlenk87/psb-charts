@@ -1,5 +1,5 @@
 # Build IIB IBM Cloud private Application
-Currently there is not a shipped IBM Integration Bus, IBM Cloud private application, however this is straight forward to build. There are three sections:   
+Currently there is no shipped IBM Integration Bus helm chart for IBM Cloud private application. However this is straight forward to build. There are three sections:   
 1. Publishing the docker container to a suitable docker repository
 2. Creating the helm chart
 3. Deploying an instance of IIB with our application
@@ -8,7 +8,7 @@ Currently there is not a shipped IBM Integration Bus, IBM Cloud private applicat
 
 We assume you have already completed the instructions to [create the docker image locally](../docker/README.md)
 
-The docker images is currently located on your local machine, and often it will be required to publish into a central docker repository. 
+The docker images is currently located on your local machine, and often it will be required to publish into a central docker repository.
 
 For instance the docker repository associated with an IBM Cloud private environment or the Bluemix Container Repository. The following instructions document the process to push the image, and are a walk through of the process documented within the knowledge center:
 https://www.ibm.com/support/knowledgecenter/en/SSBS6K_1.2.0/manage_images/using_docker_cli.html
