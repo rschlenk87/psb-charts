@@ -90,14 +90,14 @@ The same logic / implementation pattern is done for the other flows supporting e
 # Deployment
 There are three options for deployment:
 1. Deploy manually using Docker
-2. Deploy on IBM Cloud private using Helm
+2. Deploy on IBM Cloud Private using Helm
 3. Traditional On-Premise using IIB commands
 
 ## Deploy manually using Docker
 See the article [Deploying the application using Docker locally](deploy/README.md)
 
-## IBM Cloud private
-See the article [Deploying a new instance of IBM Integration Bus on IBM Cloud private deploying the newly created application](IBMCloudprivate/README.md)
+## IBM Cloud Private
+See the article [Deploying a new instance of IBM Integration Bus on IBM Cloud Private deploying the newly created application](IBMCloudprivate/README.md)
 
 ## Traditional On-Premise
 Follow the standard deployment steps document in the [knowledge center](https://www.ibm.com/support/knowledgecenter/en/SSMKHH_10.0.0/com.ibm.etools.mft.doc/af03890_.htm)

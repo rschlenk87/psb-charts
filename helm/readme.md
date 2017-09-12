@@ -1,7 +1,7 @@
-# Build IBM Integration Bus Helm Chart suitable for IBM Cloud private
+# Build IBM Integration Bus Helm Chart suitable for IBM Cloud Private
 
-This article documents the process to install the provided helm chart for IIB and application into
-an IBM Cloud private environment. It has been built based on the docker image
+This article documents the process to combine the provided helm chart for IIB and application for installing to
+IBM Cloud Private environment. It has been built based on the docker image
 provided [here](../docker/README.md), and therefore you should have completed
 these steps.
 
@@ -10,7 +10,7 @@ these steps.
 * You need to have a HTTP server for file sharing
 * It is assumed that you have already cloned the git repository to the following location: /iibmqDocker
 
-## Building and Installing the Helm Chart into an IBM Cloud private environment
+## Building and Installing the Helm Chart into an IBM Cloud Private environment
 
 1. Helm provides the ability to valid the helm chart prior to package and deploy it to a server. Run the following commands:
    ```
