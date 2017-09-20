@@ -1,5 +1,5 @@
 #!/bin/bash
-# © Copyright IBM Corporation 2017.
+# ï¿½ Copyright IBM Corporation 2017.
 #
 # All rights reserved. This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v1.0
@@ -41,7 +41,8 @@ start()
         mqsistart $NODE_NAME
         mqsicreateexecutiongroup $NODE_NAME -e $SVRNAME
         cd /tmp
-        curl -O $IIB_APP_LOCATION
+        # curl -O $IIB_APP_LOCATION
+				cp /iibApp.bar $(basename $IIB_APP_LOCATION)
         mqsideploy $NODE_NAME -e $SVRNAME -a $(basename $IIB_APP_LOCATION)
         mqsistop $NODE_NAME
     echo "----------------------------------------"

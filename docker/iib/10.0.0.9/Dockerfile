@@ -1,4 +1,4 @@
-# © Copyright IBM Corporation 2017.
+# ï¿½ Copyright IBM Corporation 2017.
 #
 # All rights reserved. This program and the accompanying materials
 # are made available under the terms of the Eclipse Public License v1.0
@@ -44,6 +44,9 @@ RUN sed -i 's/sha512/sha512 minlen=8/'  /etc/pam.d/common-password && \
 #IIBMQ Copy all iib*.sh scripts
 COPY iib*.sh /usr/local/bin/
 RUN chmod +rx /usr/local/bin/*.sh
+ENV LICENSE accept
+ADD integration /integration
+RUN /bin/bash  -c "source /opt/ibm/iib-10.0.0.9/server/bin/mqsiprofile; mqsipackagebar -a /iibApp.bar -w /integration -k RESTAPI"
 
 # Set BASH_ENV to source mqsiprofile when using docker exec bash -c
 ENV BASH_ENV=/usr/local/bin/iib_env.sh
@@ -55,4 +58,3 @@ USER iibuser
 
 # Set entrypoint to run management script
 ENTRYPOINT ["iib_manage.sh"]
-
