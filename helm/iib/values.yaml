@@ -15,8 +15,8 @@ iib:
 mq:
   qmgrName: QM1
 image:
-  repository: master.cfc:8500/default/iib10009:v0.0.1
-  tag: dev
+  repository: master.cfc:8500/default/iib10009
+  tag: v0.0.1
 service:
   type: NodePort
   nodePort:
