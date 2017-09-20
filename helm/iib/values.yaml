@@ -16,3 +16,11 @@ mq:
 image:
   repository: master.cfc:8500/default/iib10009
   tag: dev
+service:
+  type: NodePort
+  nodePort:
+    webui: 34414
+    serverlistener: 37800
+    nodelistener: 37080
+    mqchannel: 31414
+    mqwebui: 39443
