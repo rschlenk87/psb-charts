@@ -23,7 +23,7 @@ spec:
 {{- if .Values.service.nodePort.webui }}
     nodePort: {{ .Values.service.nodePort.webui }}
 {{ end -}}
-{{- end -}}
+{{- end }}
   - port: 7800
     targetPort: 7800
     name: serverlistener 
@@ -31,7 +31,7 @@ spec:
 {{- if .Values.service.nodePort.serverlistener }}
     nodePort: {{ .Values.service.nodePort.serverlistener }}
 {{ end -}}
-{{- end -}}
+{{- end }}
   - port: 7080
     targetPort: 7080
     name: nodelistener
@@ -39,7 +39,7 @@ spec:
 {{- if .Values.service.nodePort.nodelistener }}
     nodePort: {{ .Values.service.nodePort.nodelistener }}
 {{ end -}}
-{{- end -}}
+{{- end }}
   - port: 1414
     targetPort: 1414
     name: mqchannel
@@ -47,7 +47,7 @@ spec:
 {{- if .Values.service.nodePort.mqchannel }}
     nodePort: {{ .Values.service.nodePort.mqchannel }}
 {{ end -}}
-{{- end -}}
+{{- end }}
   - port: 9443
     targetPort: 9443
     name: mqwebui 
@@ -55,6 +55,6 @@ spec:
 {{- if .Values.service.nodePort.mqwebui }}
     nodePort: {{ .Values.service.nodePort.mqwebui }}
 {{ end -}}
-{{- end -}}
+{{- end }}
   selector:
     app: iibv10 
