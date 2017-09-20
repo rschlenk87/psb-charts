@@ -14,22 +14,47 @@ metadata:
   labels:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 spec:
-  type: LoadBalancer 
+  type: {{ .Values.service.type }}
   ports:
   - port: 4414
     targetPort: 4414    
     name: webui
+{{- if eq .Values.service.type "NodePort" -}}
+{{- if .Values.service.nodePort.webui }}
+    nodePort: {{ .Values.service.nodePort.webui }}
+{{ end -}}
+{{- end }}
   - port: 7800
     targetPort: 7800
     name: serverlistener 
+{{- if eq .Values.service.type "NodePort" -}}
+{{- if .Values.service.nodePort.serverlistener }}
+    nodePort: {{ .Values.service.nodePort.serverlistener }}
+{{ end -}}
+{{- end }}
   - port: 7080
     targetPort: 7080
     name: nodelistener
+{{- if eq .Values.service.type "NodePort" -}}
+{{- if .Values.service.nodePort.nodelistener }}
+    nodePort: {{ .Values.service.nodePort.nodelistener }}
+{{ end -}}
+{{- end }}
   - port: 1414
     targetPort: 1414
     name: mqchannel
+{{- if eq .Values.service.type "NodePort" -}}
+{{- if .Values.service.nodePort.mqchannel }}
+    nodePort: {{ .Values.service.nodePort.mqchannel }}
+{{ end -}}
+{{- end }}
   - port: 9443
     targetPort: 9443
     name: mqwebui 
+{{- if eq .Values.service.type "NodePort" -}}
+{{- if .Values.service.nodePort.mqwebui }}
+    nodePort: {{ .Values.service.nodePort.mqwebui }}
+{{ end -}}
+{{- end }}
   selector:
     app: iibv10 
