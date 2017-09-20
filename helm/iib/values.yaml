@@ -1,20 +1,21 @@
 ###############################################################################
 # Licensed Materials - Property of IBM.
 # Copyright IBM Corporation 2017. All Rights Reserved.
-# U.S. Government Users Restricted Rights - Use, duplication or disclosure 
+# U.S. Government Users Restricted Rights - Use, duplication or disclosure
 # restricted by GSA ADP Schedule Contract with IBM Corp.
 #
 # Contributors:
 #  IBM Corporation - initial API and implementation
 ###############################################################################
-barFile: "http://9.19.34.117/storage/CASE/refarch-privatecloud/iibApp.bar"
+# barFile: "http://9.19.34.117/storage/CASE/refarch-privatecloud/iibApp.bar"
+barFile: "/iibApp.bar"
 iib:
   nodeName: NODE
   server: default
 mq:
   qmgrName: QM1
 image:
-  repository: master.cfc:8500/default/iib10009
+  repository: master.cfc:8500/default/iib10009:v0.0.1
   tag: dev
 service:
   type: NodePort
