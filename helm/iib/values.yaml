@@ -20,8 +20,8 @@ image:
 service:
   type: NodePort
   nodePort:
-    webui: 34414
-    serverlistener: 37800
-    nodelistener: 37080
-    mqchannel: 31414
-    mqwebui: 39443
+    webui: 30414
+    serverlistener: 30780
+    nodelistener: 30708
+    mqchannel: 30141
+    mqwebui: 30443
