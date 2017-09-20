@@ -243,7 +243,7 @@
   </wsdl:binding>
   <wsdl:service name="InventoryServiceService">
     <wsdl:port binding="tns:InventoryServiceServiceSoapBinding" name="InventoryServicePort">
-      <soap:address location="http://172.16.254.44:9080/inventory/ws"/>
+      <soap:address location="http://default-casedal-casedal:9080/inventory/ws"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
