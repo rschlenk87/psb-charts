@@ -1,0 +1,12 @@
+apiVersion: v1
+entries:
+  iib:
+  - apiVersion: v1
+    created: 2017-10-03T16:41:30.120403375Z
+    description: IBM Integration Bus node with local MQ Queue Manager associated
+    digest: 52c8592b9cfee664dbd489d0a735cfab3c405d79d708a9cd5e6300a081435a53
+    name: iib
+    urls:
+    - iib-0.1.2.tgz
+    version: 0.1.2
+generated: 2017-10-03T16:41:30.120089804Z
