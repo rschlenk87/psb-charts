@@ -8,5 +8,7 @@ entries:
     name: iib
     urls:
     - https://raw.githubusercontent.com/rschlenk87/psb-charts/master/iib-0.1.2.tgz
+    icon: 
+    - https://raw.githubusercontent.com/rschlenk87/psb-charts/master/PSB_Logo_small.png
     version: 0.1.2
 generated: 2017-10-03T16:41:30.120089804Z
