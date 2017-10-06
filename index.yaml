@@ -5,10 +5,12 @@ entries:
     created: 2017-10-03T16:41:30.120403375Z
     description: IBM Integration Bus node with local MQ Queue Manager associated
     digest: 52c8592b9cfee664dbd489d0a735cfab3c405d79d708a9cd5e6300a081435a53
-    name: iib
+    icon: https://raw.githubusercontent.com/rschlenk87/psb-charts/master/PSB_Logo_small.png
+    maintainers:
+     - email: robert.schlenker@volkswagen.de
+       name: Robert Schlenker (K-SIM/P5)
+    name: PSB-Core
     urls:
     - https://raw.githubusercontent.com/rschlenk87/psb-charts/master/iib-0.1.2.tgz
-    icon: 
-    - https://raw.githubusercontent.com/rschlenk87/psb-charts/master/PSB_Logo_small.png
     version: 0.1.2
 generated: 2017-10-03T16:41:30.120089804Z
