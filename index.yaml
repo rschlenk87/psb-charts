@@ -17,6 +17,6 @@ entries:
     icon: https://latch.elevenpaths.com/www/assets/img/plugins/open_ldap.png
     name: openldap
     urls:
-    - https://raw.githubusercontent.com/rschlenk87/psb-charts/master/openldap-0.1.5.tgz
-    version: 0.1.5
+    - https://raw.githubusercontent.com/rschlenk87/psb-charts/master/openldap-0.1.0.tgz
+    version: 0.1.0
 generated: 2018-01-29T08:41:30.120403375Z
